@@ -3,10 +3,18 @@ FROM dbwebb/courserepo:base
 ARG COURSEREPO
 
 # Clone courserepo and install local development environment
+WORKDIR /dbwebb-kurser
 RUN git clone https://github.com/dbwebb-se/${COURSEREPO}.git
-WORKDIR /dbwebb/$COURSEREPO
+WORKDIR /dbwebb-kurser/$COURSEREPO
 RUN make install
-ENV PATH="/dbwebb/$COURSEREPO/bin:${PATH}"
-RUN dbwebb config create noinput    \
-    && dbwebb check                 \
-    && dbwebb init-me
+ENV PATH="/dbwebb-kurser/$COURSEREPO/bin:${PATH}"
+RUN dbwebb config create noinput                \
+    && dbwebb check                             \
+    && dbwebb init-me                           \
+    && make dbwebb-publishpure what=example     \
+    && make dbwebb-publishpure what=me 
+
+# Fix webbserver
+RUN rmdir /var/www/html                         \
+    && ln -s /dbwebb-kurser/$COURSEREPO/build/webroot /var/www/html \
+    && echo '<?php phpinfo();' > /var/www/html/phpinfo.php

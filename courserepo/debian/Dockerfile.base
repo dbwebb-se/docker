@@ -1,17 +1,46 @@
 # Use something as base image
-FROM debian:stable-slim
+#FROM debian:stable-slim
+FROM php:7.2-apache-stretch
 
 # Get needed base tools
 RUN apt-get update && apt-get install -y \
     curl    \
     git     \
     gnupg   \
+    lynx    \
     make    \
     nodejs  \
     rsync   \
     tree    \
+    vim     \
     wget    \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Apache
+#RUN apt-get update && apt-get install -y \
+#    apache2  \
+#    && rm -rf /var/lib/apt/lists/*
+
+# Configure Apache
+COPY 000-default.conf /etc/apache2/sites-available
+
+# Enable apache modules
+#RUN a2enmod rewrite expires cgi setenvif
+RUN a2enmod rewrite
+
+# Avoid warning from Apache on
+# Could not reliably determine the server's fully qualified domain name,
+RUN echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf \
+	&& a2enconf fqdn
+
+# Add composer
+#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set Timezone for PHP
+#ENV TZ=Europe/Stockholm
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+# 	&& echo $TZ > /etc/timezone
+#RUN echo "date.timezone = $TZ" > /usr/local/etc/php/conf.d/timezone.ini
 
 # Install Node.js and npm
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
@@ -20,5 +49,5 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Make workdir where to store the files
-RUN mkdir -p /dbwebb
-WORKDIR /dbwebb
+RUN mkdir -p /dbwebb-kurser
+WORKDIR /dbwebb-kurser

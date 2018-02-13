@@ -10,7 +10,9 @@ services:
     databas:
         image: dbwebb/courserepo:databas
         ports:
-            - "8080:80"
+            - "10080:80"
+        # volumes:
+        #     - .:/dbwebb-kurser/databas
     oopython:
         image: dbwebb/courserepo:oopython
         ports:
