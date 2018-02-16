@@ -9,29 +9,15 @@ RUN apt-get update && apt-get install -y \
     gnupg   \
     lynx    \
     make    \
-    nodejs  \
     rsync   \
     tree    \
     vim     \
     wget    \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Apache
-#RUN apt-get update && apt-get install -y \
-#    apache2  \
-#    && rm -rf /var/lib/apt/lists/*
-
-# Configure Apache
-COPY 000-default.conf /etc/apache2/sites-available
-
 # Enable apache modules
 #RUN a2enmod rewrite expires cgi setenvif
-RUN a2enmod rewrite
-
-# Avoid warning from Apache on
-# Could not reliably determine the server's fully qualified domain name,
-RUN echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf \
-	&& a2enconf fqdn
+#RUN a2enmod rewrite
 
 # Add composer
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -47,7 +33,3 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -y \
     nodejs  \
     && rm -rf /var/lib/apt/lists/*
-
-# Make workdir where to store the files
-RUN mkdir -p /dbwebb-kurser
-WORKDIR /dbwebb-kurser

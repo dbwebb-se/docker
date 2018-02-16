@@ -10,10 +10,8 @@ The organisation dbwebb resides in the [dbwebb organisation on GitHub](https://g
 Supported tags and respective Dockerfile links
 -------------------
 
+* [`course`, `latest` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
 * [`base` (courserepo/debian/Dockerfile.base)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base)
-* [`databas` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
-* [`oopython` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
-* [`linux` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
 
 
 
@@ -39,45 +37,58 @@ How to use this image
 
 
 
+### With course repo Makefile
+
+The Makefile in the courserepo has support for running docker related commands. Execute `make` and see all commands starting with `docker-`.
+
+
+
 ### With docker-compose
 
-Create a `docker-compose.yml` with a service "website" using this image.
+Create a `docker-compose.yml`. The course repo should contain such a file.
 
 ```text
 version: "3"
 services:
-    databas:
-        image: dbwebb/courserepo:databas
+    course:
+        image: dbwebb/courserepo
         ports:
-            - "8080:80"
+            - "10080:80"
+        volumes:
+            - ./:/dbwebb-kurs/
+            - /dbwebb-kurs/bin/
+            - /dbwebb-kurs/build/
+            - /dbwebb-kurs/example/utility/
+            - /dbwebb-kurs/node_modules/
+            - /dbwebb-kurs/vendor/
 ```
 
-Use a volume to mount your project directory into the image.
-
-Use a volume to provide a apache virtual host as a base for the default host in the webserver.
-
-The virtual host can/should point out the document root to use. Usually this is `./htdocs` for Anax, or `/app/htdocs` within the container.
-
-Create a directory `log` where apache will write its logs.
+Your current directory will be mounted onto the container, excluding those directories listed, which are part of the image itself.
 
 Start the container in the background.
 
 ```text
-docker-compose up -d website
+docker-compose up -d
 ```
 
-Open a browser to localhost:8080.
+Open a browser to localhost:10080.
 
-Run a bash terminal on the container.
+Run a bash terminal on the running container.
 
 ```text
-docker-compose exec website bash
+docker-compose exec course bash
 ```
 
 Shut down the container.
 
 ```text
-docker-compose down website
+docker-compose down
+```
+
+Run a one off command using another container.
+
+```text
+docker-compose run course bash
 ```
 
 

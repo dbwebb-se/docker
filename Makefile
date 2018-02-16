@@ -73,9 +73,13 @@ build:
 		--tag dbwebb/courserepo:base						\
 		courserepo/debian
 	$(D) build --file courserepo/debian/Dockerfile.course	\
-		--tag dbwebb/courserepo:databas						\
-		--build-arg COURSEREPO=databas						\
+		--tag dbwebb/courserepo:latest						\
+		--tag dbwebb/courserepo:course						\
 		courserepo/debian
+	# $(D) build --file courserepo/debian/Dockerfile.course	\
+	# 	--tag dbwebb/courserepo:databas						\
+	# 	--build-arg COURSEREPO=databas						\
+	# 	courserepo/debian
 	# $(D) build --file courserepo/debian/Dockerfile.course	\
 	# 	--tag dbwebb/courserepo:oopython					\
 	# 	--build-arg COURSEREPO=oopython						\

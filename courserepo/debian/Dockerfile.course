@@ -1,20 +1,22 @@
 # Use something as base image
 FROM dbwebb/courserepo:base
-ARG COURSEREPO
 
-# Clone courserepo and install local development environment
-WORKDIR /dbwebb-kurser
-RUN git clone https://github.com/dbwebb-se/${COURSEREPO}.git
-WORKDIR /dbwebb-kurser/$COURSEREPO
-RUN make install
-ENV PATH="/dbwebb-kurser/$COURSEREPO/bin:${PATH}"
-RUN dbwebb config create noinput                \
-    && dbwebb check                             \
-    && dbwebb init-me                           \
-    && make dbwebb-publishpure what=example     \
-    && make dbwebb-publishpure what=me 
+# Make workdir where to store the files
+ARG workdir=/dbwebb-kurs
+RUN mkdir -p $workdir
+WORKDIR $workdir
+COPY default ./
 
-# Fix webbserver
+# Configure Apache using virtual host
+COPY dbwebb-kurs.conf /etc/apache2/sites-available/000-default.conf
+
+# Set webroot to courserepo root
 RUN rmdir /var/www/html                         \
-    && ln -s /dbwebb-kurser/$COURSEREPO/build/webroot /var/www/html \
-    && echo '<?php phpinfo();' > /var/www/html/phpinfo.php
+    && ln -s $workdir /var/www/html
+
+# Setup installation tools in course repo
+# and install local development environment
+RUN make install
+ENV PATH="$workdir/bin:${PATH}"
+RUN dbwebb config create noinput                \
+    && dbwebb check

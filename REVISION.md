@@ -1,7 +1,7 @@
 Revision history
 ====================
 
-v0.9.0 (2018-02-05)
+v0.9.0 (2018-02-17)
 --------------------
 
-* First try.
+* General docker image for course repos, first try.
