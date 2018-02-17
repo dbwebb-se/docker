@@ -1,12 +1,21 @@
+#
 # Use something as base image
+#
 FROM dbwebb/courserepo:base
 
+#
 # Make workdir where to store the files
+#
 ARG workdir=/dbwebb-kurs
 RUN mkdir -p $workdir
 WORKDIR $workdir
 COPY default ./
 
+
+
+#
+# Setup Apache
+#
 # Configure Apache using virtual host
 COPY dbwebb-kurs.conf /etc/apache2/sites-available/000-default.conf
 
@@ -14,8 +23,12 @@ COPY dbwebb-kurs.conf /etc/apache2/sites-available/000-default.conf
 RUN rmdir /var/www/html                         \
     && ln -s $workdir /var/www/html
 
+
+
+#
 # Setup installation tools in course repo
 # and install local development environment
+#
 RUN make install                                            \
 #    && make python-venv                                    \
 #    && python3 -m venv --without-pip .venv                  \

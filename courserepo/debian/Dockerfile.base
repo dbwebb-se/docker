@@ -1,8 +1,13 @@
+#
 # Use something as base image
+#
 #FROM debian:stable-slim
 FROM php:7.2-apache-stretch
 
-# Get needed base tools
+
+#
+# Get needed base tools in Debian
+#
 RUN apt-get update && apt-get install -y \
     curl            \
     git             \
@@ -18,13 +23,27 @@ RUN apt-get update && apt-get install -y \
     wget            \
     && rm -rf /var/lib/apt/lists/*
 
+
+
+#
+# Setup apache
+#
 # Enable apache modules
 #RUN a2enmod rewrite expires cgi setenvif
 #RUN a2enmod rewrite
 
+
+
+#
 # Add composer
+#
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+
+
+#
+# Setup PHP essentials
+#
 # Set recommended PHP.ini settings
 #  see https://secure.php.net/manual/en/opcache.installation.php
 RUN { \
@@ -42,7 +61,11 @@ RUN { \
 # 	&& echo $TZ > /etc/timezone
 #RUN echo "date.timezone = $TZ" > /usr/local/etc/php/conf.d/timezone.ini
 
+
+
+#
 # Install Node.js and npm
+#
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -y \
     nodejs  \
