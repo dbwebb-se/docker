@@ -4,15 +4,18 @@ FROM php:7.2-apache-stretch
 
 # Get needed base tools
 RUN apt-get update && apt-get install -y \
-    curl    \
-    git     \
-    gnupg   \
-    lynx    \
-    make    \
-    rsync   \
-    tree    \
-    vim     \
-    wget    \
+    curl            \
+    git             \
+    gnupg           \
+    lynx            \
+    make            \
+    python3-pip     \
+    python3-venv    \
+    rsync           \
+    shellcheck      \
+    tree            \
+    vim             \
+    wget            \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable apache modules
@@ -21,6 +24,17 @@ RUN apt-get update && apt-get install -y \
 
 # Add composer
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set recommended PHP.ini settings
+#  see https://secure.php.net/manual/en/opcache.installation.php
+RUN { \
+		echo 'opcache.memory_consumption=128'; \
+		echo 'opcache.interned_strings_buffer=8'; \
+		echo 'opcache.max_accelerated_files=4000'; \
+		echo 'opcache.revalidate_freq=60'; \
+		echo 'opcache.fast_shutdown=1'; \
+		echo 'opcache.enable_cli=1'; \
+	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 # Set Timezone for PHP
 #ENV TZ=Europe/Stockholm
