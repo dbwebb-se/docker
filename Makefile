@@ -48,7 +48,7 @@ ACTION_MESSAGE = $(ECHO) "$(ACTION)---> $(1)$(NO_COLOR)"
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
-	@sed '/^$$/Q' $(THIS_MAKEFILE) | tail +3 | sed 's/#\s*//g'
+	@sed '/^$$/q' $(THIS_MAKEFILE) | tail +3 | sed 's/#\s*//g'
 	@$(ECHO) "Usage:"
 	@$(ECHO) " make [target] ..."
 	@$(ECHO) "target:"
@@ -95,7 +95,6 @@ build:
 .PHONY: push
 push:
 	@$(call HELPTEXT,$@)
+	$(D) push dbwebb/courserepo:latest
+	$(D) push dbwebb/courserepo:course
 	$(D) push dbwebb/courserepo:base
-	$(D) push dbwebb/courserepo:databas
-	$(D) push dbwebb/courserepo:oopython
-	$(D) push dbwebb/courserepo:linux
