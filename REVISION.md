@@ -2,6 +2,12 @@ Revision history
 ====================
 
 
+v0.9.* (2018-03-05)
+--------------------
+
+* Install node through curl needs ca-certificates
+
+
 v0.9.3 (2018-03-05)
 --------------------
 
