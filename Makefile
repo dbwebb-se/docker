@@ -120,6 +120,7 @@ build: update
 		courserepo/debian
 	$(D) build --file $(options) 							\
 		courserepo/debian/Dockerfile.base-all				\
+		--tag dbwebb/courserepo:all							\
 		--tag dbwebb/courserepo:base-all					\
 		--tag dbwebb/courserepo:base-debian-all				\
 		courserepo/debian
