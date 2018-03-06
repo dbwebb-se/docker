@@ -1,0 +1,12 @@
+
+
+
+#
+# Setup Apache for PHP 72
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libapache2-mod-php7.2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Apache + PHP requires preforking Apache for best results
+RUN a2dismod mpm_event && a2enmod mpm_prefork

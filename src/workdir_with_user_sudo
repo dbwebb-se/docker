@@ -1,0 +1,15 @@
+
+
+
+#
+# Make workdir where to store the files
+#
+ARG localUser=dbwebb
+ARG workdir=/home/$localUser/repo
+RUN useradd --create-home --shell /bin/bash $localUser \
+	&& mkdir -p $workdir \
+	&& chown $localUser $workdir \
+	&& adduser $localUser sudo \
+	&& echo "$localUser ALL=NOPASSWD: ALL" > /etc/sudoers.d/$localUser
+USER $localUser
+WORKDIR $workdir

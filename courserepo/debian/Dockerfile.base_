@@ -1,0 +1,72 @@
+#
+# Use something as base image
+#
+#FROM debian:stable-slim
+FROM php:7.2-apache-stretch
+
+
+#
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y \
+    curl            \
+    git             \
+    gnupg           \
+    lynx            \
+    make            \
+    python3-pip     \
+    python3-venv    \
+    rsync           \
+    shellcheck      \
+    tree            \
+    vim             \
+    wget            \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
+# Setup apache
+#
+# Enable apache modules
+#RUN a2enmod rewrite expires cgi setenvif
+#RUN a2enmod rewrite
+
+
+
+#
+# Add composer
+#
+#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+
+
+#
+# Setup PHP essentials
+#
+# Set recommended PHP.ini settings
+#  see https://secure.php.net/manual/en/opcache.installation.php
+RUN { \
+		echo 'opcache.memory_consumption=128'; \
+		echo 'opcache.interned_strings_buffer=8'; \
+		echo 'opcache.max_accelerated_files=4000'; \
+		echo 'opcache.revalidate_freq=60'; \
+		echo 'opcache.fast_shutdown=1'; \
+		echo 'opcache.enable_cli=1'; \
+	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+# Set Timezone for PHP
+#ENV TZ=Europe/Stockholm
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+# 	&& echo $TZ > /etc/timezone
+#RUN echo "date.timezone = $TZ" > /usr/local/etc/php/conf.d/timezone.ini
+
+
+
+#
+# Install Node.js and npm
+#
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -y \
+    nodejs  \
+    && rm -rf /var/lib/apt/lists/*

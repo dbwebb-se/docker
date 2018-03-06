@@ -1,0 +1,4 @@
+#
+# Use something as base image
+#
+FROM php:7.2-apache

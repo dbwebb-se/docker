@@ -1,0 +1,18 @@
+
+
+
+#
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        curl            \
+        git             \
+        gnupg           \
+        lynx            \
+        make            \
+        rsync           \
+        shellcheck      \
+        tree            \
+        vim             \
+        wget            \
+    && rm -rf /var/lib/apt/lists/*

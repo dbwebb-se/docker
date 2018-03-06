@@ -1,0 +1,10 @@
+
+
+
+#
+# Set Timezone for PHP
+#
+#ENV TZ=Europe/Stockholm
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+# 	&& echo $TZ > /etc/timezone
+#RUN echo "date.timezone = $TZ" > /usr/local/etc/php/conf.d/timezone.ini

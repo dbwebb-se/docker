@@ -1,0 +1,7 @@
+
+
+
+#
+# Get php.info for debugging
+#
+RUN echo '<?php phpinfo();' > /var/www/html/phpinfo.php

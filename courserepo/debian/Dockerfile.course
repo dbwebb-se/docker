@@ -1,44 +1,16 @@
 #
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
 # Use something as base image
 #
-FROM dbwebb/courserepo:base
-
-#
-# Make workdir where to store the files
-#
-ARG workdir=/dbwebb-kurs
-RUN mkdir -p $workdir
-WORKDIR $workdir
-COPY default ./
+FROM dbwebb/courserepo:base-all
 
 
 
 #
-# Setup Apache
+# Act as local user, not root
 #
-# Configure Apache using virtual host
-COPY dbwebb-kurs.conf /etc/apache2/sites-available/000-default.conf
-
-# Set webroot to courserepo root
-RUN rmdir /var/www/html                         \
-    && ln -s $workdir /var/www/html
-
-
-
-#
-# Setup installation tools in course repo
-# and install local development environment
-#
-RUN make install                                            \
-#    && make python-venv                                    \
-#    && python3 -m venv --without-pip .venv                  \
-#    && . .venv/bin/activate                                 \
-#    && curl https://bootstrap.pypa.io/get-pip.py | python   \
-#    && deactivate                                           \
-#    && source .venv/bin/activate                            \
-    && make python-install
-
-ENV PATH="$workdir/bin:${PATH}"
-RUN dbwebb config create noinput    \
-    && dbwebb check                 \
-    && make check
+USER $localUser

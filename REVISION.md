@@ -2,6 +2,16 @@ Revision history
 ====================
 
 
+v0.9.3 (2018-03-05)
+--------------------
+
+* Restructure how Dockerfiles are built, using modules fom src/.
+* Added images for different debian releases.
+* Added base-images for node, python, php and apache.
+* Added base image with all tools installed.
+* Updated course image, to rely on base-all image.
+
+
 v0.9.2 (2018-02-18)
 --------------------
 
