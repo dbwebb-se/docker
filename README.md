@@ -13,15 +13,19 @@ Development of images
 Use docker-compose to try out and test the various images. See `docker-compose.yml` for the collection of images.
 
 ```text
-docker-compose up php71-apache
+docker-compose up course
 ```
 
-Use makefile to build and push images.
+All Dockerfiles are generated from the script `update.bash`.
+
+Use makefile to generate, build and push images and tags.
 
 ```text
 make build
 make push
 ```
+
+Documentation for docker store is in `doc/`.
 
 
 

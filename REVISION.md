@@ -2,10 +2,11 @@ Revision history
 ====================
 
 
-v0.9.* (2018-03-05)
+v0.9.4 (2018-03-05)
 --------------------
 
-* Install node through curl needs ca-certificates
+* Install node through curl needs ca-certificates.
+* Add image for course database with tools and utilities installed.
 
 
 v0.9.3 (2018-03-05)

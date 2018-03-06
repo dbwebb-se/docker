@@ -1,0 +1,4 @@
+#
+# Use something as base image
+#
+FROM dbwebb/courserepo

@@ -13,4 +13,11 @@ FROM dbwebb/courserepo:base-all
 #
 # Act as local user, not root
 #
-USER $localUser
+USER dbwebb
+
+
+
+#
+# Create configuration for dbwebb-cli
+#
+RUN dbwebb config silent noname

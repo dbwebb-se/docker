@@ -10,6 +10,7 @@ The organisation dbwebb resides in the [dbwebb organisation on GitHub](https://g
 Supported tags and respective Dockerfile links
 -------------------
 
+* [`course-databas`, `databas` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-debian`, `course`, `latest` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
 * [`base-debian-all`, `base-all`, `all`  (courserepo/debian/Dockerfile.base-all)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-all)
 * [`base-debian-apache-php`, `base-apache-php`, `base-apache`  (courserepo/debian/Dockerfile.base-apache-php)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-apache-php)
@@ -58,6 +59,10 @@ Create a `docker-compose.yml`. The course repo should contain such a file.
 ```text
 version: "3"
 services:
+    course-databas:
+        image: dbwebb/courserepo:databas
+        volumes: [ ".:/home/dbwebb/repo" ]
+        ports: [ "10042:80" ]
     course:
         image: dbwebb/courserepo
         volumes: [ ".:/home/dbwebb/repo" ]

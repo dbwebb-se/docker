@@ -1,0 +1,8 @@
+
+
+
+#
+# Get dbwebb-cli
+#
+RUN bash -c "$(wget -qO- https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/install.bash)" \
+    && dbwebb config silent noname

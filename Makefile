@@ -132,6 +132,14 @@ build: update
 		--tag dbwebb/courserepo:course-debian				\
 		courserepo/debian
 
+	$(D) build --file $(options) 								\
+		courserepo/debian/Dockerfile.course-make-install-npm	\
+		--build-arg DBW_COURSE_REPO=databas						\
+		--tag dbwebb/courserepo:databas							\
+		--tag dbwebb/courserepo:course-databas					\
+		courserepo/debian
+
+
 
 # target: push                    - Push the docker images to Docker cloud.
 .PHONY: push
@@ -165,3 +173,6 @@ push:
 	$(D) push dbwebb/courserepo:latest
 	$(D) push dbwebb/courserepo:course
 	$(D) push dbwebb/courserepo:course-debian
+
+	$(D) push dbwebb/courserepo:databas
+	$(D) push dbwebb/courserepo:course-databas

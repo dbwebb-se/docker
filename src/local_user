@@ -4,4 +4,4 @@
 #
 # Act as local user, not root
 #
-USER $localUser
+USER dbwebb

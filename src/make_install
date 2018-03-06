@@ -1,8 +1,0 @@
-
-
-
-#
-# Install local development environment
-#
-#RUN make install \
-#	&& make check

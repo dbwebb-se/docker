@@ -1,0 +1,7 @@
+
+
+
+#
+# Create configuration for dbwebb-cli
+#
+RUN dbwebb config silent noname

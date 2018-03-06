@@ -1,0 +1,20 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
+# Use something as base image
+#
+FROM dbwebb/courserepo
+
+
+
+#
+# Get essentials from course repo and make install
+#
+ARG DBW_COURSE_REPO=
+ARG repo=https://raw.githubusercontent.com/dbwebb-se/$DBW_COURSE_REPO/master
+RUN curl --silent --remote-name $repo/Makefile \
+    && curl --silent --remote-name $repo/package.json \
+    && make install

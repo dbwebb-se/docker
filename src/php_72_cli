@@ -16,11 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php7.2-opcache \
         php7.2-mysql \
         php7.2-sqlite3 \
+        php7.2-xml \
         php7.2-zip \
     && rm -rf /var/lib/apt/lists/*
-
-# List of php packages
-# https://github.com/docker-library/php/issues/75#issuecomment-235773906
-#php-dev \
-#php-pear \
-#php7.2-dev \

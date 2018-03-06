@@ -1,1 +1,1 @@
-Docker images for working with courserepos.
+Docker images for working with course repos.
