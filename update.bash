@@ -71,6 +71,7 @@ cat \
     src/node_8 \
     src/php_72_cli \
     src/php_xdebug \
+    src/php_ini_error_reporting \
     src/composer \
     src/local_user \
     > $target
@@ -91,6 +92,7 @@ cat \
     src/php_72_cli \
     src/php_72_apache \
     src/php_xdebug \
+    src/php_ini_error_reporting \
     src/composer \
     > $target
 echo "Created $target"
@@ -112,6 +114,7 @@ cat \
     src/php_72_cli \
     src/php_72_apache \
     src/php_xdebug \
+    src/php_ini_error_reporting \
     src/composer \
     src/dbwebb_cli \
     > $target
@@ -130,12 +133,15 @@ cat \
     src/baseimage_base-all \
     src/local_user \
     src/dbwebb_cli_config \
+    src/git_config \
     > $target
 echo "Created $target"
 
 
 
 # Dockerfiles for course repo, with tools installed
+# Send course name as ARG, change this later on to get a
+# hard printout of the dockerfile used, better for doumentation.
 lib="courserepo/debian"
 target="$lib/Dockerfile.course-make-install-npm"
 

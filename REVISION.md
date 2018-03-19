@@ -2,6 +2,13 @@ Revision history
 ====================
 
 
+v0.9.* (2018-03-19)
+--------------------
+
+* Show startup errors in PHP through PHP ini setting.
+* Add default config to git.
+
+
 v0.9.4 (2018-03-05)
 --------------------
 

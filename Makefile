@@ -138,6 +138,12 @@ build: update
 		--tag dbwebb/courserepo:databas							\
 		--tag dbwebb/courserepo:course-databas					\
 		courserepo/debian
+	$(D) build --file $(options) 								\
+		courserepo/debian/Dockerfile.course-make-install-npm	\
+		--build-arg DBW_COURSE_REPO=oophp						\
+		--tag dbwebb/courserepo:oophp							\
+		--tag dbwebb/courserepo:course-oophp					\
+		courserepo/debian
 
 
 
@@ -176,3 +182,5 @@ push:
 
 	$(D) push dbwebb/courserepo:databas
 	$(D) push dbwebb/courserepo:course-databas
+	$(D) push dbwebb/courserepo:oophp
+	$(D) push dbwebb/courserepo:course-oophp

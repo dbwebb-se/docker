@@ -21,3 +21,11 @@ USER dbwebb
 # Create configuration for dbwebb-cli
 #
 RUN dbwebb config silent noname
+
+
+
+#
+# Add defult configuration for Git
+#
+RUN git config --global user.email "you@example.com" \
+    && git config --global user.name "Your Name"

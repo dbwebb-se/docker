@@ -10,6 +10,7 @@ The organisation dbwebb resides in the [dbwebb organisation on GitHub](https://g
 Supported tags and respective Dockerfile links
 -------------------
 
+* [`course-oophp`, `oophp` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-databas`, `databas` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-debian`, `course`, `latest` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
 * [`base-debian-all`, `base-all`, `all`  (courserepo/debian/Dockerfile.base-all)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-all)
