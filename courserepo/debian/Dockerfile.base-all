@@ -110,7 +110,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 ARG path=/etc/php/7.2
 RUN if [ -d /etc/php/7.2/apache2 ]; then echo 'display_errors = on' > $path/apache2/conf.d/20-display_errors.ini; fi \
-	&& if [ -d /etc/php/7.2/cli ]; then echo 'display_errors = on' > $path/cli/conf.d/20-display_errors.ini; fi;
+	&& if [ -d /etc/php/7.2/cli ]; then echo 'display_errors = on' > $path/cli/conf.d/20-display_errors.ini; fi
 
 
 

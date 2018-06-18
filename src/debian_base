@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         make            \
         rsync           \
         shellcheck      \
+        sqlite3         \
         tree            \
         vim             \
         wget            \
