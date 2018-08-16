@@ -118,6 +118,14 @@ build: update
 		--tag dbwebb/courserepo:base-apache-php				\
 		--tag dbwebb/courserepo:base-debian-apache-php		\
 		courserepo/debian
+
+	# All as cli only version and one with apache
+	$(D) build --file $(options) 							\
+		courserepo/debian/Dockerfile.base-all-cli			\
+		--tag dbwebb/courserepo:all-cli						\
+		--tag dbwebb/courserepo:base-all-cli				\
+		--tag dbwebb/courserepo:base-debian-all-cli			\
+		courserepo/debian
 	$(D) build --file $(options) 							\
 		courserepo/debian/Dockerfile.base-all				\
 		--tag dbwebb/courserepo:all							\
@@ -125,13 +133,23 @@ build: update
 		--tag dbwebb/courserepo:base-debian-all				\
 		courserepo/debian
 
+	# Complete base for course repo with tools, cli or apache
+	$(D) build --file $(options) 							\
+		courserepo/debian/Dockerfile.course-cli				\
+		--tag dbwebb/courserepo:cli							\
+		--tag dbwebb/courserepo:course-cli					\
+		--tag dbwebb/courserepo:course-debian-cli			\
+		courserepo/debian
 	$(D) build --file $(options) 							\
 		courserepo/debian/Dockerfile.course					\
 		--tag dbwebb/courserepo:latest						\
+		--tag dbwebb/courserepo:web							\
+		--tag dbwebb/courserepo:apache						\
 		--tag dbwebb/courserepo:course						\
 		--tag dbwebb/courserepo:course-debian				\
 		courserepo/debian
 
+	# With installed source for each course repo.
 	$(D) build --file $(options) 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=databas						\

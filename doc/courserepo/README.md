@@ -1,7 +1,7 @@
 Docker for dbwebb course repo
 -------------------
 
-Docker images for working with course repos.
+Docker images for working with dbwebb course repos.
 
 The organisation dbwebb resides in the [dbwebb organisation on GitHub](https://github.com/dbwebb-se).
 
@@ -10,15 +10,44 @@ The organisation dbwebb resides in the [dbwebb organisation on GitHub](https://g
 Supported tags and respective Dockerfile links
 -------------------
 
+
+
+### Complete course repos
+
+The particular course repo installed in the docker image.
+
 * [`course-oophp`, `oophp` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-databas`, `databas` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
-* [`course-debian`, `course`, `latest` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
+
+
+
+### Course repo
+
+Use these with a course repo you have on local disk and mount the filesystem onto the container. It has development tools and is useful for testing cli or with a web server.
+
+* [`course-debian`, `course`, `web`, `apache`, `latest` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course)
+* [`course-debian-cli`, `course-cli`, `cli` (courserepo/debian/Dockerfile.course)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-cli)
+
+
+
+### Base images
+
+With all, or parts of the development utilities, installed.
+
 * [`base-debian-all`, `base-all`, `all`  (courserepo/debian/Dockerfile.base-all)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-all)
+* [`base-debian-all-cli`, `base-all-cli`, `all-cli` (courserepo/debian/Dockerfile.base-all)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-all-cli)
 * [`base-debian-apache-php`, `base-apache-php`, `base-apache`  (courserepo/debian/Dockerfile.base-apache-php)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-apache-php)
 * [`base-debian-node-php`, `base-node-php`, `base-php`  (courserepo/debian/Dockerfile.base-node-php)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-node-php)
 * [`base-debian-node-python`, `base-node-python`, `base-python`  (courserepo/debian/Dockerfile.base-node-python)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-node-python)
 * [`base-debian-node`, `base-node`  (courserepo/debian/Dockerfile.base-node)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base-node)
 * [`base-debian`, `base` (courserepo/debian/Dockerfile.base)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.base)
+
+
+
+### Debian installation
+
+Here are a set of base installations for Debian, the one tagged `debian` is the base for all images above.
+
 * [`debian-buster`, `buster`  (courserepo/debian/Dockerfile.buster)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.buster)
 * [`debian-stretch`, `stretch`, `debian` (courserepo/debian/Dockerfile.stretch)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.stretch)
 * [`debian-jessie`, `jessie` (courserepo/debian/Dockerfile.jessie)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.jessie)
@@ -60,14 +89,34 @@ Create a `docker-compose.yml`. The course repo should contain such a file.
 ```text
 version: "3"
 services:
+    # Complete course repos
     course-databas:
         image: dbwebb/courserepo:databas
         volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
+    course-oophp:
+        image: dbwebb/courserepo:oophp
+        volumes: [ ".:/home/dbwebb/repo" ]
+        ports: [ "10042:80" ]
+
+    # Course repo
+    cli:
+        image: dbwebb/courserepo:cli
+        volumes: [ ".:/home/dbwebb/repo" ]
     course:
         image: dbwebb/courserepo
         volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
+    web:
+        image: dbwebb/courserepo:web
+        volumes: [ ".:/home/dbwebb/repo" ]
+        ports: [ "10042:80" ]
+    apache:
+        image: dbwebb/courserepo:apache
+        volumes: [ ".:/home/dbwebb/repo" ]
+        ports: [ "10042:80" ]
+
+    # Base images
     base-all:
         image: dbwebb/courserepo:base-all
         volumes: [ ".:/home/dbwebb/repo" ]
@@ -88,6 +137,8 @@ services:
     base:
         image: dbwebb/courserepo:base
         volumes: [ ".:/home/dbwebb/repo" ]
+
+    # Debian installations
     jessie:
         image: dbwebb/courserepo:jessie
         volumes: [ ".:/home/dbwebb/repo" ]
@@ -150,5 +201,5 @@ For contributors, see commit history and issues.
 
 ```
  .
-..:  Copyright (c) 2017-2018 dbwebb et al, info@dbwebb.se
+..:  Copyright (c) 2017-2018 Mikael Roos, mos@dbwebb.se
 ```

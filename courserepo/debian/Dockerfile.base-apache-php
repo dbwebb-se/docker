@@ -46,6 +46,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php7.2-cli \
         php7.2-gd \
         php7.2-opcache \
+        php7.2-mbstring \
         php7.2-mysql \
         php7.2-sqlite3 \
         php7.2-xml \

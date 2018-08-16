@@ -19,6 +19,7 @@ RUN set -ex; \
 	docker-php-ext-install -j "$(nproc)" \
 		gd \
 		opcache \
+		mbstring \
 		pdo_mysql \
 		pdo_sqlite \
 		zip \

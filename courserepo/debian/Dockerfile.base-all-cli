@@ -21,6 +21,16 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 
 
 #
+# Get python base tools in Debian
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3-pip     \
+        python3-venv    \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
 # Get PHP 7.2 in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -75,6 +85,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
 #
-# Act as local user, not root
+# Get dbwebb-cli
 #
-USER dbwebb
+RUN bash -c "$(wget -qO- https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/install.bash)" \
+    && dbwebb config silent noname

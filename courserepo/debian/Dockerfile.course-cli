@@ -6,7 +6,7 @@
 #
 # Use something as base image
 #
-FROM dbwebb/courserepo:base-all
+FROM dbwebb/courserepo:base-all-cli
 
 
 
@@ -29,10 +29,3 @@ RUN dbwebb config silent noname
 #
 RUN git config --global user.email "you@example.com" \
     && git config --global user.name "Your Name"
-
-
-
-#
-# Act as local user, not root
-#
-USER root
