@@ -169,6 +169,7 @@ build: update
 .PHONY: push
 push:
 	@$(call HELPTEXT,$@)
+	# Debian installations
 	$(D) push dbwebb/courserepo:debian
 	$(D) push dbwebb/courserepo:jessie
 	$(D) push dbwebb/courserepo:debian-jessie
@@ -177,6 +178,7 @@ push:
 	$(D) push dbwebb/courserepo:buster
 	$(D) push dbwebb/courserepo:debian-buster
 
+	# Base images
 	$(D) push dbwebb/courserepo:base
 	$(D) push dbwebb/courserepo:base-debian
 	$(D) push dbwebb/courserepo:base-node
@@ -190,14 +192,27 @@ push:
 	$(D) push dbwebb/courserepo:base-apache
 	$(D) push dbwebb/courserepo:base-apache-php
 	$(D) push dbwebb/courserepo:base-debian-apache-php
+
+	# Base images, all included
+	$(D) push dbwebb/courserepo:cli
+	$(D) push dbwebb/courserepo:all-cli
+	$(D) push dbwebb/courserepo:base-all-cli
+	$(D) push dbwebb/courserepo:base-debian-all-cli
 	$(D) push dbwebb/courserepo:all
 	$(D) push dbwebb/courserepo:base-all
 	$(D) push dbwebb/courserepo:base-debian-all
 
+	# Course repo
+	$(D) push dbwebb/courserepo:cli
+	$(D) push dbwebb/courserepo:course-cli
+	$(D) push dbwebb/courserepo:course-debian-cli
 	$(D) push dbwebb/courserepo:latest
+	$(D) push dbwebb/courserepo:web
+	$(D) push dbwebb/courserepo:apache
 	$(D) push dbwebb/courserepo:course
 	$(D) push dbwebb/courserepo:course-debian
 
+	# Course repo with cloned course
 	$(D) push dbwebb/courserepo:databas
 	$(D) push dbwebb/courserepo:course-databas
 	$(D) push dbwebb/courserepo:oophp

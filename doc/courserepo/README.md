@@ -92,11 +92,9 @@ services:
     # Complete course repos
     course-databas:
         image: dbwebb/courserepo:databas
-        volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
     course-oophp:
         image: dbwebb/courserepo:oophp
-        volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
 
     # Course repo
