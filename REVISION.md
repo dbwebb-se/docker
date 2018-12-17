@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.0.1 (2018-12-17)
+--------------------
+
+* Adding ctf utilities bsdgames with caesar and tesseract-ocr for ocr reading.
+
+
+
 v1.0.0 (2018-12-17)
 --------------------
 

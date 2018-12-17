@@ -4,7 +4,12 @@
 #
 # Get needed base tools in Debian
 #
+# bsdgames: caesar
+# tesseract-ocr: for ocr reading
+#
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        bsdgames \
+        tesseract-ocr \
         unzip \
         zip \
     && rm -rf /var/lib/apt/lists/*

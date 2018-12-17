@@ -14,6 +14,8 @@ FROM dbwebb/courserepo:base-all-cli
 # Get needed base tools in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        bsdgames \
+        tesseract-ocr \
         unzip \
         zip \
     && rm -rf /var/lib/apt/lists/*
