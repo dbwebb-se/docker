@@ -30,6 +30,15 @@ Use these with a course repo you have on local disk and mount the filesystem ont
 
 
 
+### CTF
+
+These are course repos with additional CTF utilities for dbwebb capture the flag.
+
+* [`ctf-cli`, `ctf` (courserepo/debian/Dockerfile.course-ctf-cli)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-ctf-cli)
+* [`ctf-apache` (courserepo/debian/Dockerfile.course-ctf-apache)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-ctf-apache)
+
+
+
 ### Base images
 
 With all, or parts of the development utilities, installed.
@@ -113,6 +122,17 @@ services:
         image: dbwebb/courserepo:apache
         volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
+
+    # CTF
+    ctf:
+        image: dbwebb/courserepo:ctf
+        volumes: [ ".:/home/dbwebb/repo" ]
+    ctf-cli:
+        image: dbwebb/courserepo:ctf-cli
+        volumes: [ ".:/home/dbwebb/repo" ]
+    ctf-apache:
+        image: dbwebb/courserepo:ctf-apache
+        volumes: [ ".:/home/dbwebb/repo" ]
 
     # Base images
     base-all:

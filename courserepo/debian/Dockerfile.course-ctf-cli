@@ -1,0 +1,41 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
+# Use something as base image
+#
+FROM dbwebb/courserepo:base-all-cli
+
+
+
+#
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        unzip \
+        zip \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
+# Act as local user, not root
+#
+USER dbwebb
+
+
+
+#
+# Create configuration for dbwebb-cli
+#
+RUN dbwebb config silent noname
+
+
+
+#
+# Add defult configuration for Git
+#
+RUN git config --global user.email "you@example.com" \
+    && git config --global user.name "Your Name"

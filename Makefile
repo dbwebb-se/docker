@@ -163,6 +163,17 @@ build: update
 		--tag dbwebb/courserepo:course-oophp					\
 		courserepo/debian
 
+	# Course repo with ctf utilities.
+	$(D) build --file $(options) 							\
+		courserepo/debian/Dockerfile.course-ctf-cli			\
+		--tag dbwebb/courserepo:ctf							\
+		--tag dbwebb/courserepo:ctf-cli						\
+		courserepo/debian
+	$(D) build --file $(options) 							\
+		courserepo/debian/Dockerfile.course-ctf-apache		\
+		--tag dbwebb/courserepo:ctf-apache					\
+		courserepo/debian
+
 
 
 # target: push                    - Push the docker images to Docker cloud.
@@ -217,3 +228,8 @@ push:
 	$(D) push dbwebb/courserepo:course-databas
 	$(D) push dbwebb/courserepo:oophp
 	$(D) push dbwebb/courserepo:course-oophp
+
+	# Course repo with ctf
+	$(D) push dbwebb/courserepo:ctf
+	$(D) push dbwebb/courserepo:ctf-cli
+	$(D) push dbwebb/courserepo:ctf-apache

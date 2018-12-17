@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.0.0 (2018-12-17)
+--------------------
+
+* Adding tags for dbwebb ctf (ctf) related containers, ctf, ctf-cli and ctf-apache.
+
+
+
 v0.9.7 (2018-08-16)
 --------------------
 
