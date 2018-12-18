@@ -13,7 +13,7 @@ FROM dbwebb/courserepo:base-all-cli
 #
 # Get needed base tools in Debian
 #
-# bsdgames: caesar
+# bsdgames: caesar, rot13
 # tesseract-ocr: for ocr reading
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -22,6 +22,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
         zip \
     && rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/usr/games/:${PATH}"
 
 
 

@@ -62,6 +62,8 @@ help:
 #
 D  := docker
 DC := docker-compose
+# options = --no-cache
+
 
 
 # target: update                  - Create the Dockerfiles from source.
@@ -74,45 +76,45 @@ update:
 
 # target: build                   - Build the docker images.
 .PHONY: build
-build: update
+build: update build-ctf
 	@$(call HELPTEXT,$@)
-	$(D) build --file $(options) courserepo/debian/Dockerfile.jessie	\
+	$(D) build $(options) --file courserepo/debian/Dockerfile.jessie	\
 		--tag dbwebb/courserepo:jessie									\
 		--tag dbwebb/courserepo:debian-jessie							\
 		courserepo/debian
-	$(D) build --file $(options) courserepo/debian/Dockerfile.stretch	\
+	$(D) build $(options) --file courserepo/debian/Dockerfile.stretch	\
 		--tag dbwebb/courserepo:debian									\
 		--tag dbwebb/courserepo:stretch									\
 		--tag dbwebb/courserepo:debian-stretch							\
 		courserepo/debian
-	$(D) build --file $(options) courserepo/debian/Dockerfile.buster	\
+	$(D) build $(options) --file courserepo/debian/Dockerfile.buster	\
 		--tag dbwebb/courserepo:buster									\
 		--tag dbwebb/courserepo:debian-buster							\
 		courserepo/debian
 
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base					\
 		--tag dbwebb/courserepo:base						\
 		--tag dbwebb/courserepo:base-debian					\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 	 	courserepo/debian/Dockerfile.base-node				\
 		--tag dbwebb/courserepo:base-node					\
 		--tag dbwebb/courserepo:base-debian-node			\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base-node-python		\
 		--tag dbwebb/courserepo:base-python					\
 		--tag dbwebb/courserepo:base-node-python			\
 		--tag dbwebb/courserepo:base-debian-node-python		\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base-node-php			\
 		--tag dbwebb/courserepo:base-php					\
 		--tag dbwebb/courserepo:base-node-php				\
 		--tag dbwebb/courserepo:base-debian-node-php		\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base-apache-php		\
 		--tag dbwebb/courserepo:base-apache					\
 		--tag dbwebb/courserepo:base-apache-php				\
@@ -120,13 +122,13 @@ build: update
 		courserepo/debian
 
 	# All as cli only version and one with apache
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base-all-cli			\
 		--tag dbwebb/courserepo:all-cli						\
 		--tag dbwebb/courserepo:base-all-cli				\
 		--tag dbwebb/courserepo:base-debian-all-cli			\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base-all				\
 		--tag dbwebb/courserepo:all							\
 		--tag dbwebb/courserepo:base-all					\
@@ -134,13 +136,13 @@ build: update
 		courserepo/debian
 
 	# Complete base for course repo with tools, cli or apache
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.course-cli				\
 		--tag dbwebb/courserepo:cli							\
 		--tag dbwebb/courserepo:course-cli					\
 		--tag dbwebb/courserepo:course-debian-cli			\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.course					\
 		--tag dbwebb/courserepo:latest						\
 		--tag dbwebb/courserepo:web							\
@@ -150,26 +152,32 @@ build: update
 		courserepo/debian
 
 	# With installed source for each course repo.
-	$(D) build --file $(options) 								\
+	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=databas						\
 		--tag dbwebb/courserepo:databas							\
 		--tag dbwebb/courserepo:course-databas					\
 		courserepo/debian
-	$(D) build --file $(options) 								\
+	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=oophp						\
 		--tag dbwebb/courserepo:oophp							\
 		--tag dbwebb/courserepo:course-oophp					\
 		courserepo/debian
 
+
+
+# target: build-ctf               - Build specific images.
+.PHONY: build-ctf
+build-ctf: update
+	@$(call HELPTEXT,$@)
 	# Course repo with ctf utilities.
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.course-ctf-cli			\
 		--tag dbwebb/courserepo:ctf							\
 		--tag dbwebb/courserepo:ctf-cli						\
 		courserepo/debian
-	$(D) build --file $(options) 							\
+	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.course-ctf-apache		\
 		--tag dbwebb/courserepo:ctf-apache					\
 		courserepo/debian
@@ -178,7 +186,7 @@ build: update
 
 # target: push                    - Push the docker images to Docker cloud.
 .PHONY: push
-push:
+push: push-ctf
 	@$(call HELPTEXT,$@)
 	# Debian installations
 	$(D) push dbwebb/courserepo:debian
@@ -229,6 +237,12 @@ push:
 	$(D) push dbwebb/courserepo:oophp
 	$(D) push dbwebb/courserepo:course-oophp
 
+
+
+# target: push-ctf                - Push specific images.
+.PHONY: push-ctf
+push-ctf:
+	@$(call HELPTEXT,$@)
 	# Course repo with ctf
 	$(D) push dbwebb/courserepo:ctf
 	$(D) push dbwebb/courserepo:ctf-cli
