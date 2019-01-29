@@ -3,6 +3,14 @@ Revision history
 
 
 
+v1.1.0 (2019-01-29)
+--------------------
+
+* Upgrade node to version 10.
+* Add mysql-client to base-all-cli and base-all.
+
+
+
 v1.0.2 (2018-12-18)
 --------------------
 

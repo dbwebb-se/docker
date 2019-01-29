@@ -11,9 +11,18 @@ FROM dbwebb/courserepo:debian
 
 
 #
+# Install mysql client
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        mysql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
 # Install Node.js and npm
 #
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get update && apt-get install -y --no-install-recommends \
         nodejs  \
     && rm -rf /var/lib/apt/lists/*
