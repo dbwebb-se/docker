@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.1.1 (2019-02-19)
+--------------------
+
+* Adding lsof to find processes occuping a port.
+
+
+
 v1.1.0 (2019-01-29)
 --------------------
 
