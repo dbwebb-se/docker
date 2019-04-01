@@ -219,5 +219,5 @@ For contributors, see commit history and issues.
 
 ```
  .
-..:  Copyright (c) 2017-2018 Mikael Roos, mos@dbwebb.se
+..:  Copyright (c) 2017-2019 Mikael Roos, mos@dbwebb.se
 ```

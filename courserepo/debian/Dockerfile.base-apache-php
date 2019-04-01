@@ -34,7 +34,7 @@ CMD ["apachectl", "-D FOREGROUND"]
 
 
 #
-# Get PHP 7.2 in Debian
+# Get PHP 7.3 in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-transport-https \
@@ -43,23 +43,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
     && apt-get update && apt-get install -y --no-install-recommends \
-        php7.2-cli \
-        php7.2-gd \
-        php7.2-opcache \
-        php7.2-mbstring \
-        php7.2-mysql \
-        php7.2-sqlite3 \
-        php7.2-xml \
-        php7.2-zip \
+        php7.3-cli \
+        php7.3-gd \
+        php7.3-opcache \
+        php7.3-mbstring \
+        php7.3-mysql \
+        php7.3-sqlite3 \
+        php7.3-xml \
+        php7.3-zip \
     && rm -rf /var/lib/apt/lists/*
 
 
 
 #
-# Setup Apache for PHP 72
+# Setup Apache for PHP 73
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        libapache2-mod-php7.2 \
+        libapache2-mod-php7.3 \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache modules
