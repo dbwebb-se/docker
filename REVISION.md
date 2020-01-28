@@ -3,6 +3,14 @@ Revision history
 
 
 
+v1.3.0 (2020-01-28)
+--------------------
+
+* Update to Node v12.
+* Update how course specific databas, oophp are built.
+
+
+
 v1.2.0 (2019-04-01)
 --------------------
 
