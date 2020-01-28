@@ -98,6 +98,29 @@ Create a `docker-compose.yml`. The course repo should contain such a file.
 ```text
 version: "3"
 services:
+    databas: &databas
+        image: dbwebb/courserepo:databas
+        volumes:
+            - ".:/home/dbwebb/repo"
+            - "/home/dbwebb/repo/bin"
+            - "/home/dbwebb/repo/build"
+            - "/home/dbwebb/repo/node_modules"
+            - "/home/dbwebb/repo/vendor"
+            - "./example/sql/inspect/my.cnf:/home/dbwebb/.my.cnf"
+
+    cli:
+        <<: *databas
+        #image: dbwebb/courserepo:cli
+        # image: dbwebb/courserepo:databas
+        # volumes:
+        #     - ".:/home/dbwebb/repo"
+        #     - "./example/sql/inspect/my.cnf:/home/dbwebb/.my.cnf"
+
+    server:
+        <<: *databas
+        ports:
+            - "1337:1337"
+
     # Complete course repos
     course-databas:
         image: dbwebb/courserepo:databas
@@ -219,5 +242,5 @@ For contributors, see commit history and issues.
 
 ```
  .
-..:  Copyright (c) 2017-2019 Mikael Roos, mos@dbwebb.se
+..:  Copyright (c) 2017-2020 Mikael Roos, mos@dbwebb.se
 ```
