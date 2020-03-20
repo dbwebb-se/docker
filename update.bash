@@ -114,6 +114,7 @@ cat \
     src/php_73_cli \
     src/php_xdebug \
     src/php_ini_error_reporting \
+    src/dotnet_sdk_31 \
     src/composer \
     src/dbwebb_cli \
     > $target
@@ -138,6 +139,7 @@ cat \
     src/php_73_apache \
     src/php_xdebug \
     src/php_ini_error_reporting \
+    src/dotnet_sdk_31 \
     src/composer \
     src/dbwebb_cli \
     > $target

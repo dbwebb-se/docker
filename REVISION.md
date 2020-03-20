@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.4.0 (2020-02-20)
+--------------------
+
+* Add C#.NET and ASP.NET through dotnet SDK.
+
+
+
 v1.3.0 (2020-01-28)
 --------------------
 
