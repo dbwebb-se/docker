@@ -111,3 +111,10 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 #
 RUN bash -c "$(wget -qO- https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/install.bash)" \
     && dbwebb config silent noname
+
+
+
+#
+# Get anax-cli
+#
+RUN bash -c "$(wget -qO- https://raw.githubusercontent.com/canax/anax-cli/master/src/install.bash)"

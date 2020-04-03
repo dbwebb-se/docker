@@ -117,6 +117,7 @@ cat \
     src/dotnet_sdk_31 \
     src/composer \
     src/dbwebb_cli \
+    src/anax_cli \
     > $target
 echo "Created $target"
 #src/php_ini_opcache \
@@ -142,6 +143,7 @@ cat \
     src/dotnet_sdk_31 \
     src/composer \
     src/dbwebb_cli \
+    src/anax_cli \
     > $target
 echo "Created $target"
 #src/php_ini_opcache \
