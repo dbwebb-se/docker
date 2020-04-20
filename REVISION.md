@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.6.0 (2020-04-20)
+--------------------
+
+* Add pre built courserepo for htmlphp.
+
+
+
 v1.5.0 (2020-04-03)
 --------------------
 
