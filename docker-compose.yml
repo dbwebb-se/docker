@@ -6,6 +6,9 @@ services:
     course-htmlphp:
         image: dbwebb/courserepo:htmlphp
         ports: [ "10042:80" ]
+    course-design:
+        image: dbwebb/courserepo:design
+        ports: [ "10042:80" ]
     course-databas:
         image: dbwebb/courserepo:databas
         ports: [ "10042:80" ]

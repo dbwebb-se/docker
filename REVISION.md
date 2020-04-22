@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.7.0 (2020-04-22)
+--------------------
+
+* Add pre built courserepo for design.
+
+
+
 v1.6.0 (2020-04-20)
 --------------------
 

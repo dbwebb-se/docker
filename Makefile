@@ -160,6 +160,12 @@ build: update build-ctf
 		courserepo/debian
 	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
+		--build-arg DBW_COURSE_REPO=design						\
+		--tag dbwebb/courserepo:design							\
+		--tag dbwebb/courserepo:course-design					\
+		courserepo/debian
+	$(D) build $(options) --file 								\
+		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=databas						\
 		--tag dbwebb/courserepo:databas							\
 		--tag dbwebb/courserepo:course-databas					\
@@ -240,6 +246,8 @@ push: push-ctf
 	# Course repo with cloned course
 	$(D) push dbwebb/courserepo:htmlphp
 	$(D) push dbwebb/courserepo:course-htmlphp
+	$(D) push dbwebb/courserepo:design
+	$(D) push dbwebb/courserepo:course-design
 	$(D) push dbwebb/courserepo:databas
 	$(D) push dbwebb/courserepo:course-databas
 	$(D) push dbwebb/courserepo:oophp
