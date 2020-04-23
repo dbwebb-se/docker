@@ -176,6 +176,12 @@ build: update build-ctf
 		--tag dbwebb/courserepo:oophp							\
 		--tag dbwebb/courserepo:course-oophp					\
 		courserepo/debian
+	$(D) build $(options) --file 								\
+		courserepo/debian/Dockerfile.course-make-install-npm	\
+		--build-arg DBW_COURSE_REPO=ramverk1					\
+		--tag dbwebb/courserepo:ramverk1						\
+		--tag dbwebb/courserepo:course-ramverk1					\
+		courserepo/debian
 
 
 
@@ -252,6 +258,8 @@ push: push-ctf
 	$(D) push dbwebb/courserepo:course-databas
 	$(D) push dbwebb/courserepo:oophp
 	$(D) push dbwebb/courserepo:course-oophp
+	$(D) push dbwebb/courserepo:ramverk1
+	$(D) push dbwebb/courserepo:course-ramverk1
 
 
 

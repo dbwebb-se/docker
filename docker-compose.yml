@@ -15,6 +15,9 @@ services:
     course-oophp:
         image: dbwebb/courserepo:oophp
         ports: [ "10042:80" ]
+    course-ramverk1:
+        image: dbwebb/courserepo:ramverk1
+        ports: [ "10042:80" ]
 
     # Course repo
     cli:

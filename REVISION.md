@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.8.0 (2020-04-23)
+--------------------
+
+* Add pre built courserepo for ramverk1.
+
+
+
 v1.7.0 (2020-04-22)
 --------------------
 
