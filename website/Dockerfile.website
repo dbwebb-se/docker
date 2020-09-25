@@ -11,6 +11,13 @@ FROM anax/dev:php73-apache
 
 
 #
+# Get Apache and prepare to start it
+#
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
+
+
+#
 # Get needed base tools in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \

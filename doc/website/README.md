@@ -91,6 +91,12 @@ Run a one off command using the cli container.
 docker-compose run cli bash
 ```
 
+You can also run this container directly using docker and mounting its port to a port of your own choice.
+
+```text
+docker run -p 8080:80 dbwebb/website
+```
+
 
 
 License

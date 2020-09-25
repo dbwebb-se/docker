@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.9.2 (2020-09-25)
+--------------------
+
+* Add a default apache config to the website image.
+
+
+
 v1.9.1 (2020-09-25)
 --------------------
 
