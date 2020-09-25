@@ -183,6 +183,12 @@ build: update build-ctf
 		--tag dbwebb/courserepo:course-ramverk1					\
 		courserepo/debian
 
+		# website
+	$(D) build $(options) --file 								\
+		website/Dockerfile.website								\
+		--tag dbwebb/website:all								\
+		website
+
 
 
 # target: build-ctf               - Build specific images.
@@ -260,6 +266,9 @@ push: push-ctf
 	$(D) push dbwebb/courserepo:course-oophp
 	$(D) push dbwebb/courserepo:ramverk1
 	$(D) push dbwebb/courserepo:course-ramverk1
+
+	# website
+	$(D) push dbwebb/website:all
 
 
 

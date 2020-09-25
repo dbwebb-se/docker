@@ -1,0 +1,10 @@
+
+
+
+#
+# Get essentials from course repo and make install
+#
+ARG repo=https://github.com/dbwebb-se/website.git
+RUN git clone $repo /app \
+    && cd /app \
+    && make docker

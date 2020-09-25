@@ -1,0 +1,47 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
+# Use something as base image
+#
+FROM anax/dev:php73-apache
+
+
+
+#
+# Get needed base tools in Debian
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl            \
+        git             \
+        gnupg           \
+        lsof            \
+        lynx            \
+        make            \
+        rsync           \
+        shellcheck      \
+        sqlite3         \
+        tree            \
+        vim             \
+        wget            \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
+# Get essentials from course repo and make install
+#
+ARG repo=https://github.com/dbwebb-se/website.git
+RUN git clone $repo /app \
+    && cd /app \
+    && make docker
+
+
+
+#
+# Act as local user, not root
+#
+USER root
