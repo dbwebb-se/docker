@@ -76,7 +76,7 @@ update:
 
 # target: build                   - Build the docker images.
 .PHONY: build
-build: update build-ctf
+build: update build-ctf build-website
 	@$(call HELPTEXT,$@)
 	$(D) build $(options) --file courserepo/debian/Dockerfile.jessie	\
 		--tag dbwebb/courserepo:jessie									\
@@ -183,9 +183,16 @@ build: update build-ctf
 		--tag dbwebb/courserepo:course-ramverk1					\
 		courserepo/debian
 
-		# website
+
+
+# target: build-website           - Build specific images.
+.PHONY: build-website
+build-website: update
+	@$(call HELPTEXT,$@)
+	# website
 	$(D) build $(options) --file 								\
 		website/Dockerfile.website								\
+		--tag dbwebb/website:latest								\
 		--tag dbwebb/website:all								\
 		website
 
@@ -210,7 +217,7 @@ build-ctf: update
 
 # target: push                    - Push the docker images to Docker cloud.
 .PHONY: push
-push: push-ctf
+push: push-ctf push-website
 	@$(call HELPTEXT,$@)
 	# Debian installations
 	$(D) push dbwebb/courserepo:debian
@@ -267,7 +274,14 @@ push: push-ctf
 	$(D) push dbwebb/courserepo:ramverk1
 	$(D) push dbwebb/courserepo:course-ramverk1
 
+
+
+# target: push-website            - Push specific images.
+.PHONY: push-website
+push-website:
+	@$(call HELPTEXT,$@)
 	# website
+	$(D) push dbwebb/website:latest
 	$(D) push dbwebb/website:all
 
 

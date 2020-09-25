@@ -3,6 +3,14 @@ Revision history
 
 
 
+v1.9.1 (2020-09-25)
+--------------------
+
+* Add latest tag to website image.
+* Enable to build and push only website image.
+
+
+
 v1.9.0 (2020-09-25)
 --------------------
 

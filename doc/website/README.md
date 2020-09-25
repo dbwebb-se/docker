@@ -12,7 +12,7 @@ Supported tags and respective Dockerfile links
 
 The repo for the website, pre installed in the docker image.
 
-* [`all` (website/Dockerfile.website)](https://github.com/dbwebb-se/docker/blob/master/website/Dockerfile.website)
+* [`all`, `latest` (website/Dockerfile.website)](https://github.com/dbwebb-se/docker/blob/master/website/Dockerfile.website)
 
 
 
