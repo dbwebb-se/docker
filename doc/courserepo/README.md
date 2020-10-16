@@ -16,6 +16,7 @@ Supported tags and respective Dockerfile links
 
 The particular course repo installed in the docker image.
 
+* [`course-python`, `python` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-htmlphp`, `htmlphp` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-design`, `design` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)
 * [`course-databas`, `databas` (courserepo/debian/Dockerfile.course-make-install-npm)](https://github.com/dbwebb-se/docker/blob/master/courserepo/debian/Dockerfile.course-make-install-npm)

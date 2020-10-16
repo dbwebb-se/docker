@@ -3,6 +3,14 @@ Revision history
 
 
 
+v1.9.3 (2020-10-16)
+--------------------
+
+* Add custom build for python-repo.
+* Upgrade to PHP 7.4.
+
+
+
 v1.9.2 (2020-09-25)
 --------------------
 

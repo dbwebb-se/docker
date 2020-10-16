@@ -21,7 +21,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
 
 
 #
-# Get PHP 7.3 in Debian
+# Get PHP 7.4 in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-transport-https \
@@ -30,14 +30,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
     && apt-get update && apt-get install -y --no-install-recommends \
-        php7.3-cli \
-        php7.3-gd \
-        php7.3-opcache \
-        php7.3-mbstring \
-        php7.3-mysql \
-        php7.3-sqlite3 \
-        php7.3-xml \
-        php7.3-zip \
+        php7.4-cli \
+        php7.4-gd \
+        php7.4-opcache \
+        php7.4-mbstring \
+        php7.4-mysql \
+        php7.4-sqlite3 \
+        php7.4-xml \
+        php7.4-zip \
     && rm -rf /var/lib/apt/lists/*
 
 

@@ -6,7 +6,7 @@
 #
 # Use something as base image
 #
-FROM anax/dev:php73-apache
+FROM dbwebb/courserepo:base-all
 
 
 
