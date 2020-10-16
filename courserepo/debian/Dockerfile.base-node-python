@@ -24,9 +24,13 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
 # Get python base tools in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        python3-pip     \
+        python3         \
         python3-venv    \
+        pylint3         \
+    && ln -s /usr/bin/pylint3 /usr/bin/pylint \
     && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONIOENCODING=utf-8
 
 
 

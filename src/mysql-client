@@ -5,5 +5,5 @@
 # Install mysql client (or MariaDB substitute)
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        mysql-client \
+        mariadb-client \
     && rm -rf /var/lib/apt/lists/*

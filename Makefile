@@ -83,11 +83,11 @@ build: update build-ctf build-website
 		--tag dbwebb/courserepo:debian-jessie							\
 		courserepo/debian
 	$(D) build $(options) --file courserepo/debian/Dockerfile.stretch	\
-		--tag dbwebb/courserepo:debian									\
 		--tag dbwebb/courserepo:stretch									\
 		--tag dbwebb/courserepo:debian-stretch							\
 		courserepo/debian
 	$(D) build $(options) --file courserepo/debian/Dockerfile.buster	\
+		--tag dbwebb/courserepo:debian									\
 		--tag dbwebb/courserepo:buster									\
 		--tag dbwebb/courserepo:debian-buster							\
 		courserepo/debian

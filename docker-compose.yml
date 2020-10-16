@@ -18,6 +18,9 @@ services:
     course-ramverk1:
         image: dbwebb/courserepo:ramverk1
         ports: [ "10042:80" ]
+    course-python:
+        image: dbwebb/courserepo:python
+        ports: [ "10042:80" ]
 
     # Course repo
     cli:

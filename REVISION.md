@@ -3,6 +3,15 @@ Revision history
 
 
 
+v1.9.4 (2020-10-16)
+--------------------
+
+* Install pylint.
+* Fix python UTF-8.
+* Upgrade to debian buster.
+
+
+
 v1.9.3 (2020-10-16)
 --------------------
 
