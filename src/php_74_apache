@@ -1,0 +1,15 @@
+
+
+
+#
+# Setup Apache for PHP 74
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libapache2-mod-php7.4 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Enable Apache modules
+RUN a2enmod rewrite
+
+# Apache + PHP requires preforking Apache for best results
+RUN a2dismod mpm_event && a2enmod mpm_prefork
