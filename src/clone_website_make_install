@@ -2,9 +2,14 @@
 
 
 #
-# Get essentials from course repo and make install
+# Get essentials from course repo and make install.
+# Prepare the anax installation and warm its cache.
 #
 ARG repo=https://github.com/dbwebb-se/website.git
 RUN git clone $repo /app \
     && cd /app \
-    && make docker
+    && composer install \
+    && install -d -m 777 cache/cimage \
+    && install -d -m 777 cache/anax-warm \
+    && php script/cache-warm.php \
+    && mv cache/anax-warm cache/anax

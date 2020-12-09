@@ -3,6 +3,11 @@ services:
 version: "3"
 services:
     # Complete course repos
+    website:
+        image: dbwebb/website
+        ports: [ "10042:80" ]
+
+    # Complete course repos
     course-htmlphp:
         image: dbwebb/courserepo:htmlphp
         ports: [ "10042:80" ]

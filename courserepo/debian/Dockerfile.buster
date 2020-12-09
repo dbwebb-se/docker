@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         shellcheck      \
         sqlite3         \
         tree            \
+        unzip           \
         vim             \
         wget            \
     && rm -rf /var/lib/apt/lists/*

@@ -6,14 +6,7 @@
 #
 # Use something as base image
 #
-FROM dbwebb/courserepo:base-all
-
-
-
-#
-# Get Apache and prepare to start it
-#
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
+FROM dbwebb/courserepo:debian
 
 
 
@@ -32,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         shellcheck      \
         sqlite3         \
         tree            \
+        unzip           \
         vim             \
         wget            \
     && rm -rf /var/lib/apt/lists/*
@@ -39,12 +33,96 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 
 #
-# Get essentials from course repo and make install
+# Get Apache and prepare to start it
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        apache2 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN a2enmod rewrite expires cgi setenvif
+
+#ENV APACHE_CONFDIR /etc/apache2
+#ENV APACHE_ENVVARS $APACHE_CONFDIR/envvars
+
+# logs should go to stdout / stderr
+#RUN set -ex \
+#	&& . "$APACHE_ENVVARS" \
+#	&& ln -sfT /dev/stderr "$APACHE_LOG_DIR/error.log" \
+#	&& ln -sfT /dev/stdout "$APACHE_LOG_DIR/access.log" \
+#   && ln -sfT /dev/stdout "$APACHE_LOG_DIR/other_vhosts_access.log"
+
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
+#EXPOSE 80
+CMD ["apachectl", "-D", "FOREGROUND"]
+
+
+
+#
+# Get PHP 7.2 in Debian
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        apt-transport-https \
+        lsb-release \
+        ca-certificates \
+    && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+    && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
+    && apt-get update && apt-get install -y --no-install-recommends \
+        php7.2-cli \
+        php7.2-gd \
+        php7.2-opcache \
+        php7.2-mbstring \
+        php7.2-mysql \
+        php7.2-sqlite3 \
+        php7.2-xml \
+        php7.2-zip \
+    && rm -rf /var/lib/apt/lists/*
+
+
+
+#
+# Setup Apache for PHP 72
+#
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libapache2-mod-php7.2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Enable Apache modules
+RUN a2enmod rewrite
+
+# Apache + PHP requires preforking Apache for best results
+RUN a2dismod mpm_event && a2enmod mpm_prefork
+
+
+
+#
+# Show PHP startup errors.
+#
+ARG path=/etc/php/7.2
+RUN if [ -d /etc/php/7.2/apache2 ]; then echo 'display_errors = on' > $path/apache2/conf.d/20-display_errors.ini; fi \
+	&& if [ -d /etc/php/7.2/cli ]; then echo 'display_errors = on' > $path/cli/conf.d/20-display_errors.ini; fi
+
+
+
+#
+# Add composer
+#
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+
+
+#
+# Get essentials from course repo and make install.
+# Prepare the anax installation and warm its cache.
 #
 ARG repo=https://github.com/dbwebb-se/website.git
 RUN git clone $repo /app \
     && cd /app \
-    && make docker
+    && composer install \
+    && install -d -m 777 cache/cimage \
+    && install -d -m 777 cache/anax-warm \
+    && php script/cache-warm.php \
+    && mv cache/anax-warm cache/anax
 
 
 
@@ -52,3 +130,13 @@ RUN git clone $repo /app \
 # Act as local user, not root
 #
 USER root
+
+
+
+#
+# Apache start
+#
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
+#EXPOSE 80
+CMD ["apachectl", "-D", "FOREGROUND"]

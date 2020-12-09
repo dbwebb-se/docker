@@ -50,6 +50,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         apache2 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN a2enmod rewrite expires cgi setenvif
+
 #ENV APACHE_CONFDIR /etc/apache2
 #ENV APACHE_ENVVARS $APACHE_CONFDIR/envvars
 
@@ -61,8 +63,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #   && ln -sfT /dev/stdout "$APACHE_LOG_DIR/other_vhosts_access.log"
 
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
 #EXPOSE 80
-CMD ["apachectl", "-D FOREGROUND"]
+CMD ["apachectl", "-D", "FOREGROUND"]
 
 
 
@@ -77,6 +80,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
     && apt-get update && apt-get install -y --no-install-recommends \
         php7.4-cli \
+        php7.4-curl \
         php7.4-gd \
         php7.4-opcache \
         php7.4-mbstring \
