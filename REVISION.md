@@ -7,6 +7,7 @@ v1.9.7 (2021-01-29)
 --------------------
 
 * Added so that .requirements.txt is installed in python and oopython.
+* Changed so pylint is to be installed through requirements.txt in each repo.
 
 
 
