@@ -197,6 +197,20 @@ build: update build-ctf build-website
 
 
 
+# target: build-target           - Build specific target=course.
+.PHONY: build-target
+build-target: update
+	@$(call HELPTEXT,$@)
+	# target=course
+	$(D) build --no-cache $(options) --file 								\
+		courserepo/debian/Dockerfile.course-make-install-npm	\
+		--build-arg DBW_COURSE_REPO=$(target)					\
+		--tag dbwebb/courserepo:$(target)						\
+		--tag dbwebb/courserepo:course-$(target)				\
+		courserepo/debian
+
+
+
 # target: build-website           - Build specific images.
 .PHONY: build-website
 build-website: update

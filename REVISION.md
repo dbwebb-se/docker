@@ -3,6 +3,13 @@ Revision history
 
 
 
+v1.9.7 (2021-01-29)
+--------------------
+
+* Added so that .requirements.txt is installed in python and oopython.
+
+
+
 v1.9.6 (2021-01-14)
 --------------------
 

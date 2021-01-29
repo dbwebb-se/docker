@@ -40,3 +40,6 @@ ARG repo=https://raw.githubusercontent.com/dbwebb-se/$DBW_COURSE_REPO/master
 RUN curl --silent --remote-name $repo/Makefile \
     && curl --silent --remote-name $repo/package.json \
     && make install
+
+RUN curl --fail --silent --remote-name $repo/.requirements.txt; exit 0
+RUN make python-install

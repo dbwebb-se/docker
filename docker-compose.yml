@@ -26,6 +26,9 @@ services:
     course-python:
         image: dbwebb/courserepo:python
         ports: [ "10042:80" ]
+    course-oopython:
+        image: dbwebb/courserepo:oopython
+        ports: [ "10042:80" ]
 
     # Course repo
     cli:

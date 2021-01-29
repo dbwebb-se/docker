@@ -5,10 +5,15 @@
 # Get python base tools in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        python3         \
-        python3-venv    \
-        pylint3         \
-    && ln -s /usr/bin/pylint3 /usr/bin/pylint \
+        python3             \
+        python3-pip         \
+        python3-setuptools  \
+        python3-venv        \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONIOENCODING=utf-8
+
+COPY pylint /usr/bin
+
+#         pylint3         \
+#    && ln -s /usr/bin/pylint3 /usr/bin/pylint \
