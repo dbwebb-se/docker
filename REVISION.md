@@ -3,6 +3,16 @@ Revision history
 
 
 
+v1.10.0 (2021-05-10)
+--------------------
+
+* Added to include jq.
+* Added new certificates for php repository.
+* Removed jessy from being built.
+* Cleaned up in Makefile how the flow of building was.
+
+
+
 v1.9.7 (2021-01-29)
 --------------------
 

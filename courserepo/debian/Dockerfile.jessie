@@ -13,11 +13,14 @@ FROM debian:jessie-slim
 #
 # Get needed base tools in Debian
 #
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-key adv --fetch-keys 'https://packages.sury.org/php/apt.gpg' \
+    && apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl            \
         git             \
         gnupg           \
+        gnupg-curl      \
+        jq              \
         lsof            \
         lynx            \
         make            \

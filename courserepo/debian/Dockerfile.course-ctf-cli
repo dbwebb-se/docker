@@ -16,7 +16,8 @@ FROM dbwebb/courserepo:base-all-cli
 # bsdgames: caesar, rot13
 # tesseract-ocr: for ocr reading
 #
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-key adv --fetch-keys 'https://packages.sury.org/php/apt.gpg' \
+    && apt-get update && apt-get install -y --no-install-recommends \
         bsdgames \
         tesseract-ocr \
         unzip \

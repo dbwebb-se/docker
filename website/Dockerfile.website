@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl            \
         git             \
         gnupg           \
+        jq              \
         lsof            \
         lynx            \
         make            \
@@ -65,8 +66,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-transport-https \
         lsb-release \
         ca-certificates \
-    && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
+    && apt-key adv --fetch-keys 'https://packages.sury.org/php/apt.gpg' \
     && apt-get update && apt-get install -y --no-install-recommends \
         php7.2-cli \
         php7.2-gd \

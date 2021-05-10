@@ -67,6 +67,9 @@ services:
         image: dbwebb/courserepo:base-apache
         volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
+    base-all-cli:
+        image: dbwebb/courserepo:base-all-cli
+        volumes: [ ".:/home/dbwebb/repo" ]
     base-php:
         image: dbwebb/courserepo:base-php
         volumes: [ ".:/home/dbwebb/repo" ]

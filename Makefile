@@ -76,12 +76,19 @@ update:
 
 # target: build                   - Build the docker images.
 .PHONY: build
-build: update build-ctf build-website
+build: update build-debian build-courserepo build-ctf build-website
 	@$(call HELPTEXT,$@)
-	$(D) build $(options) --file courserepo/debian/Dockerfile.jessie	\
-		--tag dbwebb/courserepo:jessie									\
-		--tag dbwebb/courserepo:debian-jessie							\
-		courserepo/debian
+
+
+
+# target: build-debian            - Build the docker images for debian.
+.PHONY: build-debian
+build-debian: update
+	@$(call HELPTEXT,$@)
+	# $(D) build $(options) --file courserepo/debian/Dockerfile.jessie	\
+	# 	--tag dbwebb/courserepo:jessie									\
+	# 	--tag dbwebb/courserepo:debian-jessie							\
+	# 	courserepo/debian
 	$(D) build $(options) --file courserepo/debian/Dockerfile.stretch	\
 		--tag dbwebb/courserepo:stretch									\
 		--tag dbwebb/courserepo:debian-stretch							\
@@ -92,6 +99,12 @@ build: update build-ctf build-website
 		--tag dbwebb/courserepo:debian-buster							\
 		courserepo/debian
 
+
+
+# target: build-courserepo        - Build the docker images.
+.PHONY: build-courserepo
+build-courserepo: update build-debian
+	@$(call HELPTEXT,$@)
 	$(D) build $(options) --file 							\
 		courserepo/debian/Dockerfile.base					\
 		--tag dbwebb/courserepo:base						\
@@ -202,7 +215,7 @@ build: update build-ctf build-website
 build-target: update
 	@$(call HELPTEXT,$@)
 	# target=course
-	$(D) build --no-cache $(options) --file 								\
+	$(D) build --no-cache $(options) --file 					\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=$(target)					\
 		--tag dbwebb/courserepo:$(target)						\
@@ -247,8 +260,8 @@ push: push-ctf push-website
 	@$(call HELPTEXT,$@)
 	# Debian installations
 	$(D) push dbwebb/courserepo:debian
-	$(D) push dbwebb/courserepo:jessie
-	$(D) push dbwebb/courserepo:debian-jessie
+	#$(D) push dbwebb/courserepo:jessie
+	#$(D) push dbwebb/courserepo:debian-jessie
 	$(D) push dbwebb/courserepo:stretch
 	$(D) push dbwebb/courserepo:debian-stretch
 	$(D) push dbwebb/courserepo:buster

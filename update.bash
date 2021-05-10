@@ -4,7 +4,8 @@
 debian="src/baseimage_debian"
 
 # Dockerfiles for debian
-for version in jessie stretch buster; do
+# jessie
+for version in stretch buster; do
     lib="courserepo/debian"
     target="$lib/Dockerfile.$version"
 
