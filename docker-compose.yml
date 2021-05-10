@@ -34,7 +34,7 @@ services:
     cli:
         image: dbwebb/courserepo:cli
         volumes: [ ".:/home/dbwebb/repo" ]
-    course:
+    courserepo:
         image: dbwebb/courserepo
         volumes: [ ".:/home/dbwebb/repo" ]
         ports: [ "10042:80" ]
