@@ -71,7 +71,6 @@ cat \
     $debian \
     src/node_12 \
     src/php_74_cli \
-    src/php_xdebug \
     src/php_ini_error_reporting \
     src/composer \
     src/local_user \
@@ -92,7 +91,6 @@ cat \
     src/apache \
     src/php_74_cli \
     src/php_74_apache \
-    src/php_xdebug \
     src/php_ini_error_reporting \
     src/composer \
     > $target
@@ -113,7 +111,6 @@ cat \
     src/node_12 \
     src/python \
     src/php_74_cli \
-    src/php_xdebug \
     src/php_ini_error_reporting \
     src/dotnet_sdk_31 \
     src/composer \
@@ -139,7 +136,6 @@ cat \
     src/apache \
     src/php_74_cli \
     src/php_74_apache \
-    src/php_xdebug \
     src/php_ini_error_reporting \
     src/dotnet_sdk_31 \
     src/composer \

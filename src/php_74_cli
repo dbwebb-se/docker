@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php7.4-mbstring \
         php7.4-mysql \
         php7.4-sqlite3 \
+        php7.4-xdebug \
         php7.4-xml \
         php7.4-zip \
     && rm -rf /var/lib/apt/lists/*
