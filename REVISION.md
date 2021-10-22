@@ -3,6 +3,15 @@ Revision history
 
 
 
+v1.12.0 (2021-10-22)
+--------------------
+
+* Upgraded to PHP 80.
+* Added webtec as repo.
+* Added gawk.
+
+
+
 v1.11.0 (2021-05-18)
 --------------------
 

@@ -173,6 +173,12 @@ build-courserepo: update build-debian
 		courserepo/debian
 	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
+		--build-arg DBW_COURSE_REPO=webtec						\
+		--tag dbwebb/courserepo:webtec							\
+		--tag dbwebb/courserepo:course-webtec					\
+		courserepo/debian
+	$(D) build $(options) --file 								\
+		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=design						\
 		--tag dbwebb/courserepo:design							\
 		--tag dbwebb/courserepo:course-design					\
@@ -304,6 +310,8 @@ push: push-ctf push-website
 	# Course repo with cloned course
 	$(D) push dbwebb/courserepo:htmlphp
 	$(D) push dbwebb/courserepo:course-htmlphp
+	$(D) push dbwebb/courserepo:webtec
+	$(D) push dbwebb/courserepo:course-webtec
 	$(D) push dbwebb/courserepo:design
 	$(D) push dbwebb/courserepo:course-design
 	$(D) push dbwebb/courserepo:databas
