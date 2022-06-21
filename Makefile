@@ -89,14 +89,19 @@ build-debian: update
 	# 	--tag dbwebb/courserepo:jessie									\
 	# 	--tag dbwebb/courserepo:debian-jessie							\
 	# 	courserepo/debian
-	$(D) build $(options) --file courserepo/debian/Dockerfile.stretch	\
-		--tag dbwebb/courserepo:stretch									\
-		--tag dbwebb/courserepo:debian-stretch							\
-		courserepo/debian
-	$(D) build $(options) --file courserepo/debian/Dockerfile.buster	\
+	# $(D) build $(options) --file courserepo/debian/Dockerfile.stretch	\
+	# 	--tag dbwebb/courserepo:stretch									\
+	# 	--tag dbwebb/courserepo:debian-stretch							\
+	# 	courserepo/debian
+	# $(D) build $(options) --file courserepo/debian/Dockerfile.buster	\
+	# 	--tag dbwebb/courserepo:debian									\
+	# 	--tag dbwebb/courserepo:buster									\
+	# 	--tag dbwebb/courserepo:debian-buster							\
+	# 	courserepo/debian
+	$(D) build $(options) --file courserepo/debian/Dockerfile.bullseye	\
 		--tag dbwebb/courserepo:debian									\
-		--tag dbwebb/courserepo:buster									\
-		--tag dbwebb/courserepo:debian-buster							\
+		--tag dbwebb/courserepo:bullseye								\
+		--tag dbwebb/courserepo:debian-bullseye							\
 		courserepo/debian
 
 

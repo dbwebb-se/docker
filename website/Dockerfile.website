@@ -14,6 +14,7 @@ FROM dbwebb/courserepo:debian
 # Get needed base tools in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        bsdmainutils    \
         ca-certificates \
         curl            \
         gawk            \
@@ -25,6 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         make            \
         rsync           \
         shellcheck      \
+        ssh             \
         sqlite3         \
         tree            \
         unzip           \

@@ -1,3 +1,12 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "make update / update.bash"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+#
+# Use something as base image
+#
+FROM debian:bullseye-slim
 
 
 
@@ -24,3 +33,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         vim             \
         wget            \
     && rm -rf /var/lib/apt/lists/*
+
+
+
+#
+# Make workdir where to store the files
+#
+ARG localUser=dbwebb
+ARG workdir=/home/$localUser/repo
+RUN useradd --create-home --shell /bin/bash $localUser \
+	&& mkdir -p $workdir \
+	&& chown $localUser $workdir
+WORKDIR $workdir
