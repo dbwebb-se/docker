@@ -76,7 +76,7 @@ update:
 
 # target: build                   - Build the docker images.
 .PHONY: build
-build: update build-debian build-courserepo build-ctf build-website
+build: update build-debian build-courserepo build-website #build-ctf
 	@$(call HELPTEXT,$@)
 
 
@@ -277,16 +277,18 @@ build-ctf: update
 
 # target: push                    - Push the docker images to Docker cloud.
 .PHONY: push
-push: push-ctf push-website
+push: push-website # push-ctf 
 	@$(call HELPTEXT,$@)
 	# Debian installations
 	$(D) push dbwebb/courserepo:debian
 	#$(D) push dbwebb/courserepo:jessie
 	#$(D) push dbwebb/courserepo:debian-jessie
-	$(D) push dbwebb/courserepo:stretch
-	$(D) push dbwebb/courserepo:debian-stretch
-	$(D) push dbwebb/courserepo:buster
-	$(D) push dbwebb/courserepo:debian-buster
+	#$(D) push dbwebb/courserepo:stretch
+	#$(D) push dbwebb/courserepo:debian-stretch
+	#$(D) push dbwebb/courserepo:buster
+	#$(D) push dbwebb/courserepo:debian-buster
+	$(D) push dbwebb/courserepo:bullseye
+	$(D) push dbwebb/courserepo:debian-bullseye
 
 	# Base images
 	$(D) push dbwebb/courserepo:base
@@ -323,18 +325,20 @@ push: push-ctf push-website
 	$(D) push dbwebb/courserepo:course-debian
 
 	# Course repo with cloned course
-	$(D) push dbwebb/courserepo:htmlphp
-	$(D) push dbwebb/courserepo:course-htmlphp
+	#$(D) push dbwebb/courserepo:htmlphp
+	#$(D) push dbwebb/courserepo:course-htmlphp
 	$(D) push dbwebb/courserepo:webtec
 	$(D) push dbwebb/courserepo:course-webtec
-	$(D) push dbwebb/courserepo:design
-	$(D) push dbwebb/courserepo:course-design
+	#$(D) push dbwebb/courserepo:design
+	#$(D) push dbwebb/courserepo:course-design
 	$(D) push dbwebb/courserepo:databas
 	$(D) push dbwebb/courserepo:course-databas
-	$(D) push dbwebb/courserepo:oophp
-	$(D) push dbwebb/courserepo:course-oophp
-	$(D) push dbwebb/courserepo:ramverk1
-	$(D) push dbwebb/courserepo:course-ramverk1
+	#$(D) push dbwebb/courserepo:oophp
+	#$(D) push dbwebb/courserepo:course-oophp
+	#$(D) push dbwebb/courserepo:ramverk1
+	#$(D) push dbwebb/courserepo:course-ramverk1
+	$(D) push dbwebb/courserepo:mvc
+	$(D) push dbwebb/courserepo:course-mvc
 	$(D) push dbwebb/courserepo:python
 	$(D) push dbwebb/courserepo:course-python
 	$(D) push dbwebb/courserepo:oopython
