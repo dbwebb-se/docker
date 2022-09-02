@@ -170,42 +170,42 @@ build-courserepo: update build-debian
 		courserepo/debian
 
 	# With installed source for each course repo.
-	$(D) build $(options) --file 								\
-		courserepo/debian/Dockerfile.course-make-install-npm	\
-		--build-arg DBW_COURSE_REPO=htmlphp						\
-		--tag dbwebb/courserepo:htmlphp							\
-		--tag dbwebb/courserepo:course-htmlphp					\
-		courserepo/debian
+	# $(D) build $(options) --file 								\
+	# 	courserepo/debian/Dockerfile.course-make-install-npm	\
+	# 	--build-arg DBW_COURSE_REPO=htmlphp						\
+	# 	--tag dbwebb/courserepo:htmlphp							\
+	# 	--tag dbwebb/courserepo:course-htmlphp					\
+	# 	courserepo/debian
 	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=webtec						\
 		--tag dbwebb/courserepo:webtec							\
 		--tag dbwebb/courserepo:course-webtec					\
 		courserepo/debian
-	$(D) build $(options) --file 								\
-		courserepo/debian/Dockerfile.course-make-install-npm	\
-		--build-arg DBW_COURSE_REPO=design						\
-		--tag dbwebb/courserepo:design							\
-		--tag dbwebb/courserepo:course-design					\
-		courserepo/debian
+	# $(D) build $(options) --file 								\
+	# 	courserepo/debian/Dockerfile.course-make-install-npm	\
+	# 	--build-arg DBW_COURSE_REPO=design						\
+	# 	--tag dbwebb/courserepo:design							\
+	# 	--tag dbwebb/courserepo:course-design					\
+	# 	courserepo/debian
 	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=databas						\
 		--tag dbwebb/courserepo:databas							\
 		--tag dbwebb/courserepo:course-databas					\
 		courserepo/debian
-	$(D) build $(options) --file 								\
-		courserepo/debian/Dockerfile.course-make-install-npm	\
-		--build-arg DBW_COURSE_REPO=oophp						\
-		--tag dbwebb/courserepo:oophp							\
-		--tag dbwebb/courserepo:course-oophp					\
-		courserepo/debian
-	$(D) build $(options) --file 								\
-		courserepo/debian/Dockerfile.course-make-install-npm	\
-		--build-arg DBW_COURSE_REPO=ramverk1					\
-		--tag dbwebb/courserepo:ramverk1						\
-		--tag dbwebb/courserepo:course-ramverk1					\
-		courserepo/debian
+	# $(D) build $(options) --file 								\
+	# 	courserepo/debian/Dockerfile.course-make-install-npm	\
+	# 	--build-arg DBW_COURSE_REPO=oophp						\
+	# 	--tag dbwebb/courserepo:oophp							\
+	# 	--tag dbwebb/courserepo:course-oophp					\
+	# 	courserepo/debian
+	# $(D) build $(options) --file 								\
+	# 	courserepo/debian/Dockerfile.course-make-install-npm	\
+	# 	--build-arg DBW_COURSE_REPO=ramverk1					\
+	# 	--tag dbwebb/courserepo:ramverk1						\
+	# 	--tag dbwebb/courserepo:course-ramverk1					\
+	# 	courserepo/debian
 	$(D) build $(options) --file 								\
 		courserepo/debian/Dockerfile.course-make-install-npm	\
 		--build-arg DBW_COURSE_REPO=python						\
@@ -232,6 +232,16 @@ build-target: update
 		--tag dbwebb/courserepo:$(target)						\
 		--tag dbwebb/courserepo:course-$(target)				\
 		courserepo/debian
+
+
+
+# target: push-target           - Push specific target=course.
+.PHONY: push-target
+push-target: update
+	@$(call HELPTEXT,$@)
+	# target=course
+	$(D) push dbwebb/courserepo:$(target)
+	$(D) push dbwebb/courserepo:course-$(target)
 
 
 

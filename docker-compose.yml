@@ -8,23 +8,26 @@ services:
         ports: [ "10042:80" ]
 
     # Complete course repos
-    course-htmlphp:
-        image: dbwebb/courserepo:htmlphp
-        ports: [ "10042:80" ]
+    # course-htmlphp:
+    #     image: dbwebb/courserepo:htmlphp
+    #     ports: [ "10042:80" ]
     course-webtec:
         image: dbwebb/courserepo:webtec
         ports: [ "10042:80" ]
-    course-design:
-        image: dbwebb/courserepo:design
-        ports: [ "10042:80" ]
+    # course-design:
+    #     image: dbwebb/courserepo:design
+    #     ports: [ "10042:80" ]
     course-databas:
         image: dbwebb/courserepo:databas
         ports: [ "10042:80" ]
-    course-oophp:
-        image: dbwebb/courserepo:oophp
-        ports: [ "10042:80" ]
-    course-ramverk1:
-        image: dbwebb/courserepo:ramverk1
+    # course-oophp:
+    #     image: dbwebb/courserepo:oophp
+    #     ports: [ "10042:80" ]
+    # course-ramverk1:
+    #     image: dbwebb/courserepo:ramverk1
+    #     ports: [ "10042:80" ]
+    course-mvc:
+        image: dbwebb/courserepo:mvc
         ports: [ "10042:80" ]
     course-python:
         image: dbwebb/courserepo:python

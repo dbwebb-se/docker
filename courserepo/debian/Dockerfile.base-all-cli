@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #
 # Install Node.js and npm
 #
-RUN curl -sL https://deb.nodesource.com/setup_17.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get update && apt-get install -y --no-install-recommends \
         nodejs  \
     && rm -rf /var/lib/apt/lists/*
@@ -49,7 +49,7 @@ COPY pylint /usr/bin
 
 
 #
-# Get PHP 80 in Debian
+# Get PHP 81 in Debian
 #
 RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-transport-https \
@@ -58,16 +58,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
     && apt-key adv --fetch-keys 'https://packages.sury.org/php/apt.gpg' \
     && apt-get update && apt-get install -y --no-install-recommends \
-        php8.0-cli \
-        php8.0-curl \
-        php8.0-gd \
-        php8.0-opcache \
-        php8.0-mbstring \
-        php8.0-mysql \
-        php8.0-sqlite3 \
-        php8.0-xdebug \
-        php8.0-xml \
-        php8.0-zip \
+        php8.1-cli \
+        php8.1-curl \
+        php8.1-gd \
+        php8.1-opcache \
+        php8.1-mbstring \
+        php8.1-mysql \
+        php8.1-sqlite3 \
+        php8.1-xdebug \
+        php8.1-xml \
+        php8.1-zip \
     && rm -rf /var/lib/apt/lists/*
 
 
