@@ -99,3 +99,9 @@ services:
     buster:
         image: dbwebb/courserepo:buster
         volumes: [ ".:/home/dbwebb/repo" ]
+    bullseye:
+        image: dbwebb/courserepo:bullseye
+        volumes: [ ".:/home/dbwebb/repo" ]
+    debian:
+        image: dbwebb/courserepo:debian
+        volumes: [ ".:/home/dbwebb/repo" ]

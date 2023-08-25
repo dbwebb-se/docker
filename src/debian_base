@@ -7,6 +7,7 @@
 RUN apt-get update && apt-get install -y --no-install-recommends \
         bsdmainutils    \
         ca-certificates \
+        cowsay          \
         curl            \
         gawk            \
         git             \
@@ -24,3 +25,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         vim             \
         wget            \
     && rm -rf /var/lib/apt/lists/*
+
+ENV PATH="${PATH}:/usr/games"
