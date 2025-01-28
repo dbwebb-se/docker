@@ -1,6 +1,3 @@
-version: "3"
-services:
-version: "3"
 services:
     # Complete course repos
     website:
